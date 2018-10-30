@@ -8,9 +8,16 @@ namespace FormAuth.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public string Index()
         {
-            return View();
+            
+             
+            if (User.Identity.IsAuthenticated)
+            {
+                return "Ваш логин " + User.Identity.Name;
+            }
+            return "Пользователь не зарегистрирован";
+
         }
 
         public ActionResult About()

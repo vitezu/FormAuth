@@ -6,9 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FormAuth.Models
 {
-    public class Models
-    {
-        public class LoginModel
+      public class LoginModel
         {
             [Required]
             public string Name { get; set; }
@@ -35,5 +33,5 @@ namespace FormAuth.Models
             [Required]
             public int Age { get; set; }
         }
-    }
+    
 }
