@@ -32,7 +32,7 @@ namespace FormAuth.Controllers
                     // создаем нового пользователя
                     using (UserContext db = new UserContext())
                     {
-                        db.Users.Add(new User { Email = model.Name, Password = model.Password, Age = model.Age });
+                        db.Users.Add(new User { Email = model.Name, Password = model.Password, Age = model.Age, RoleId = 2 });
                         db.SaveChanges();
 
                         user = db.Users.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
@@ -83,6 +83,11 @@ namespace FormAuth.Controllers
             }
 
             return View(model);
+        }
+        public ActionResult LogOff ()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
     }

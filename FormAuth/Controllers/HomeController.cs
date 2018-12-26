@@ -8,18 +8,20 @@ namespace FormAuth.Controllers
 {
     public class HomeController : Controller
     {
+        //[Authorize (Roles ="admin")]
         public string Index()
         {
             
              
             if (User.Identity.IsAuthenticated)
             {
-                return "Ваш логин " + User.Identity.Name;
+                return "Ваш логин " + User.Identity.Name + User.Identity.AuthenticationType;
             }
             return "Пользователь не зарегистрирован";
 
         }
 
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
